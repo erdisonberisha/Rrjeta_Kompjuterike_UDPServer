@@ -14,6 +14,9 @@ server.on('message', function(message, remote) {
  const reply = 'Mesazhi ka arritur me sukses ne server!';
  server.send(reply, 0, reply.length, remote.port, remote.address, function(err, bytes) {
   if (err) throw err;
+  console.log(
+    `UDP server message send to ${remote.address}:${remote.port}`
+  );
   });
 });
 

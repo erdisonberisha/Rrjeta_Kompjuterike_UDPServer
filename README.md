@@ -1,5 +1,5 @@
 # Rrjeta_Kompjuterike_UDPServer
-Krjimi i nje serverit dhe nje klienti me NodeJs ku 4 pajisje te kycura ne nje rrjet UDP mund komunikojne me ane te sockets.
+Krjimi i nje serverit dhe nje klienti me NodeJs ku 4 pajisje te kycura ne nje rrjet UDP mund komunikojne me ane te sockets. 
 
 # Serveri
 1. Të vendosen variabla te cilat përmbajnë numrin e portit (numri i portit të jetë i

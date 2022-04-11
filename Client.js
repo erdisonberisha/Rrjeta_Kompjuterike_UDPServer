@@ -38,8 +38,7 @@ else {
     catch (e) {
       console.log("Kujdes:",errorcode);
     }});
-
-
+}
 var client = dgram.createSocket('udp4');
 client.on('message', function (message, remote) {
   console.log(remote.address + ':' + remote.port +' - ' + message);
@@ -52,7 +51,3 @@ client.send(message, 0, message.length, PORT, HOST, function(err, bytes) {
   if (err) throw err;
   console.log('Mesazhi udp u dergua me sukses ' + HOST +':'+ PORT);
   });
-
-
-
-}

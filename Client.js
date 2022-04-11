@@ -10,44 +10,33 @@ errorcode = "NUK KENI QASJE!"
 
 
 var dgram = require('dgram');
-// fs.chmod(path, 777, () => {
-//   console.log("\nReading the file contents");
-//   console.log(fs.readFileSync(path, 'utf8'));
-  
-//   console.log("\nTrying to write to file");
-//   try {
-//     fs.writeFileSync(path, "This file has now been edited.");
-//   }
-//   catch (e) {
-//     console.log("Error Code:",errorcode);
-//   }
-// });
 
-if (client == '192.168.0.25') {
-  console.log("\nGranting read and write access to user");
+
+if (client == '192.168.0.28') {
+  console.log("\nKeni qasje ne lexim the mbishkrim te file");
   fs.chmod("mesazhi.txt", 0o600, () => {
     
-    console.log("\nReading the file contents");
+    console.log("\nPermbajtja e file");
     console.log(fs.readFileSync("mesazhi.txt", 'utf8'));
     const ndryshimi = prompt("Ndryshoni file si read and write: ");
 
     console.log("Ndryshimi i bere: ");
-    fs.writeFileSync('mesazhi.txt',ndryshimi);
-    console.log(ndryshimi);
+    fs.appendFileSync('mesazhi.txt',ndryshimi);
+    console.log(fs.readFileSync("mesazhi.txt", 'utf8'));
 
   });
 }
 else {
   fs.chmod(path, 777, () => {
-    console.log("\nReading the file contents");
+    console.log("\nPermbajtja e file");
     console.log(fs.readFileSync(path, 'utf8'));
     
-    console.log("\nTrying to write to file");
+    console.log("\nDuke lexuar file");
     try {
-      fs.writeFileSync(path, "This file has now been edited.");
+      fs.writeFileSync(path, "Ky file sapo u editua.");
     }
     catch (e) {
-      console.log("Error Code:",errorcode);
+      console.log("Kujdes:",errorcode);
     }});
 
 
@@ -56,12 +45,12 @@ client.on('message', function (message, remote) {
   console.log(remote.address + ':' + remote.port +' - ' + message);
 
 });
-const mesazhi = prompt("Send a message to server: ");
+const mesazhi = prompt("Dergoni mesazh tek serveri: ");
 var message = new Buffer.from(mesazhi);
 
 client.send(message, 0, message.length, PORT, HOST, function(err, bytes) {
   if (err) throw err;
-  console.log('UDP message sent to ' + HOST +':'+ PORT);
+  console.log('Mesazhi udp u dergua me sukses ' + HOST +':'+ PORT);
   });
 
 
